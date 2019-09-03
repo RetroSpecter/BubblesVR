@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 597661485855952835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.035200015, y: 0.0352, z: 0.035200015}
+  m_LocalScale: {x: 0.14835751, y: 0.14835745, z: 0.14835751}
   m_Children: []
   m_Father: {fileID: 4619209214456322401}
   m_RootOrder: 0
@@ -137,7 +137,7 @@ Transform:
   m_GameObject: {fileID: 3621671336641580788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.035195, y: 0.035195, z: 0.035195}
+  m_LocalScale: {x: 0.14833638, y: 0.14833638, z: 0.14833638}
   m_Children: []
   m_Father: {fileID: 4619209215780850871}
   m_RootOrder: 0
@@ -471,7 +471,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4619209215665536833}
-  - component: {fileID: 4619209215665536832}
   m_Layer: 0
   m_Name: XR Rig 1
   m_TagString: Untagged
@@ -494,21 +493,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4619209215665536832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619209215665536834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99810d6c41db3ef47b4c63dd83298b8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackingSpace: 0
-  m_StationaryCameraYOffset: 1.36144
-  m_CameraFloorOffsetObject: {fileID: 4619209215577417641}
 --- !u!1 &4619209215780850876
 GameObject:
   m_ObjectHideFlags: 0

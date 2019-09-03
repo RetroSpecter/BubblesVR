@@ -166,14 +166,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Refraction
-    Event: 500
+    Event: 1000
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 8704
+        m_Bits: 8192
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: bb6380c0ad9ad214c9ad36f6ab9ece81, type: 2}
+    overrideMaterial: {fileID: 2100000, guid: e1726d0e81512804688f12c274a79dc5, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 8
@@ -204,12 +204,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: NonMaskedObjects
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 32769
+        m_Bits: 32768
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
