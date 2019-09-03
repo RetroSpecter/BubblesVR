@@ -48,7 +48,6 @@
             sampler2D _MainTex;
             float4 _MainTex_ST;
 			sampler2D _CameraOpaqueTexture;
-			float4 _CameraOpaqueTexture_ST;
 			float4 _Offset;
 			float _FadeOutDistance;
 			float _Smoothness;
@@ -72,18 +71,21 @@
 
             fixed4 frag (v2f i) : SV_Target
             {	
+				#if UNITY_SINGLE_PASS_STEREO
+				i.screenUV.xy = TransformStereoScreenSpaceTex(i.screenUV.xy, i.screenUV.w);
+				#endif
 				i.normal = normalize(i.normal);
 
 			
 				// distance
-				half3 n = normalize(i.normal);
-				half3 v = normalize(i.viewT);
 				float camDist = abs(distance(i.worldPos, _WorldSpaceCameraPos));
 				float distLerp = lerp(0, 1, (camDist / _FadeOutDistance) - 1);
 				distLerp = min(distLerp, 1);
 				distLerp = max(distLerp, 0);
 
-				// refraaction
+				// refraction
+				half3 n = normalize(i.normal);
+				half3 v = normalize(i.viewT);
 				half fr = pow(1.0f - dot(v, n), _Fresnel) * distLerp;
 				half reverse_fr = 1 - fr;
 				sampler2D screenTex = _CameraOpaqueTexture;
