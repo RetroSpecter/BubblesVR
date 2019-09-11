@@ -8319,7 +8319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 50
-  fallForce: 25
+  fallForce: 100
   stiffness: 1
 --- !u!135 &797227952
 SphereCollider:
@@ -10419,13 +10419,10 @@ MonoBehaviour:
   maskLayers:
   - name: layer1
     occuldedLayer: Mask1
-    frameLayer: Frame1
   - name: layer2
     occuldedLayer: Mask2
-    frameLayer: Frame2
   - name: layer3
     occuldedLayer: Mask3
-    frameLayer: Frame3
   objectLayers:
   - name: DefaultRoom
     layerObjects:

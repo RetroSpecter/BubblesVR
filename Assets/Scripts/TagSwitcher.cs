@@ -7,33 +7,51 @@ public class TagSwitcher : MonoBehaviour
     public string unocculdedLayer;
     public MaskLayer[] maskLayers;
     public ObjectLayerGroup[] objectLayers;
+    public static TagSwitcher instance;
+
+    private void Start()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            //SwapMaskLayer(objectLayers[0], maskLayers[2]);
-            //SwapMaskLayer(objectLayers[2], maskLayers[0]);
-            SwitchOcclusionLayer(objectLayers[2], unocculdedLayer);
-            SwitchOcclusionLayer(objectLayers[3], maskLayers[2].occuldedLayer);
+            SwapOcclusionLayer(2);
         }
     }
 
-    public void SwapMaskLayer(ObjectLayerGroup olg, MaskLayer ml) {
-        SwitchOcclusionLayer(olg, ml.occuldedLayer);
-        SwitchFrameLayer(olg, ml.frameLayer);
+    public void SwapOcclusionLayer(int maskNumber) {
+        SwapLayer(objectLayers[maskNumber], unocculdedLayer);
+        SwapLayer(objectLayers[0], maskLayers[maskNumber].occuldedLayer);
+
+        ObjectLayerGroup temp = objectLayers[0];
+        objectLayers[0] = objectLayers[maskNumber];
+        objectLayers[maskNumber] = temp;
+
     }
 
-    public void SwitchOcclusionLayer(ObjectLayerGroup olg, string layer) {
+    public void SwapLayer(ObjectLayerGroup olg, string layer) {
         foreach (GameObject go in olg.layerObjects) {
             go.layer = LayerMask.NameToLayer(layer);
             if (olg.affectChildren)
             {
                 foreach (Transform transform in go.GetComponentsInChildren<Transform>())
                 {
+                    
                     transform.gameObject.layer = LayerMask.NameToLayer(layer);
+                    //transform.GetComponent<Light>()?.cullingMask = LayerMask.NameToLayer(layer);
+                    print(transform.gameObject.layer);
                 }
             }
         }
+    }
+
+    /*
+    public void SwapMaskLayer(ObjectLayerGroup olg, MaskLayer ml)
+    {
+        SwitchOcclusionLayer(olg, ml.occuldedLayer);
+        SwitchFrameLayer(olg, ml.frameLayer);
     }
 
     public void SwitchFrameLayer(ObjectLayerGroup olg, string layer) {
@@ -49,6 +67,7 @@ public class TagSwitcher : MonoBehaviour
             }
         }
     }
+    */
 }
 
 [System.Serializable]
@@ -66,5 +85,5 @@ public struct ObjectLayerGroup {
 public struct MaskLayer {
     public string name;
     public string occuldedLayer;
-    public string frameLayer;
+    //public string frameLayer;
 }
