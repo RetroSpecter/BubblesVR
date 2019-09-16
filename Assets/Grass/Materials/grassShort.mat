@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_DepthFog
-  m_Shader: {fileID: -6465566751694194690, guid: 612738a43254e43468d34ca669662e79,
+  m_Name: grassShort
+  m_Shader: {fileID: -6465566751694194690, guid: dfaaaf1f3e044014dbd545b8fbe0314e,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,12 +20,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_1D5CEB3D:
-        m_Texture: {fileID: 2800000, guid: acd738bfdeb571a4590a57abcfc30d77, type: 3}
+    - Texture2D_F83AB643:
+        m_Texture: {fileID: 2800000, guid: b450edfe0cab4ec439716614977c779c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_2D777708: 0
-    - Vector1_3E21B57C: 0
-    - Vector1_8556BF8: 30.2
-    m_Colors: []
+    - Vector1_58BC7C7C: 0.3
+    - Vector1_7FCBBF5: 0.789
+    - Vector1_9ABAABDF: 0.075
+    - Vector1_AF1B5565: 0.39
+    m_Colors:
+    - Color_3885D49F: {r: 1, g: 0.2264151, b: 0.690317, a: 0}
+    - Color_91720933: {r: 0.45098042, g: 0.8862746, b: 0.6784314, a: 1}
+    - Vector2_E3C5A418: {r: 3, g: 0, b: 0, a: 0}

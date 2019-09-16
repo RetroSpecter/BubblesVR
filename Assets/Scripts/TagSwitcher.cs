@@ -38,10 +38,12 @@ public class TagSwitcher : MonoBehaviour
             {
                 foreach (Transform transform in go.GetComponentsInChildren<Transform>())
                 {
-                    
                     transform.gameObject.layer = LayerMask.NameToLayer(layer);
-                    //transform.GetComponent<Light>()?.cullingMask = LayerMask.NameToLayer(layer);
-                    print(transform.gameObject.layer);
+                    if (transform.GetComponent<Light>() != null)
+                    {
+                        print(LayerMask.NameToLayer(layer));
+                        transform.GetComponent<Light>().cullingMask = LayerMask.GetMask(new string[]{"Default", layer});
+                    }
                 }
             }
         }
