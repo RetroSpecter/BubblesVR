@@ -7,9 +7,18 @@ public class Grabber : MonoBehaviour
     Bubble currentBubble;
     public Controllers controllerSize;
 
+    private void Start()
+    {
+        TagSwitcher.swap += LetGoTeleport;
+    }
+
     private void Update()
     {
         if(currentBubble != null && !isGripping()) {
+            LetGo();
+        }
+
+        if (transform.position.magnitude < 0.1f) {
             LetGo();
         }
     }
@@ -17,8 +26,14 @@ public class Grabber : MonoBehaviour
     public bool isGripping() {
         return (controllerSize == Controllers.Left  && (Input.GetButton(ControllerHand.OculusInputPrefix + "Button1") || Input.GetButton(ControllerHand.OculusInputPrefix + "Button2")
                 || Input.GetAxis(ControllerHand.OculusInputPrefix + "SecondaryIndexTrigger") > 0.1f || Input.GetAxis(ControllerHand.OculusInputPrefix + "SecondaryHandTrigger") > 0.1f)) 
-            || (controllerSize == Controllers.Right || Input.GetButton(ControllerHand.OculusInputPrefix + "Button3") || Input.GetButton(ControllerHand.OculusInputPrefix + "Button4")
-                || Input.GetAxis(ControllerHand.OculusInputPrefix + "PrimaryIndexTrigger") > 0.1f || Input.GetAxis(ControllerHand.OculusInputPrefix + "PrimaryHandTrigger") > 0.1f);
+            || (controllerSize == Controllers.Right && (Input.GetButton(ControllerHand.OculusInputPrefix + "Button3") || Input.GetButton(ControllerHand.OculusInputPrefix + "Button4")
+                || Input.GetAxis(ControllerHand.OculusInputPrefix + "PrimaryIndexTrigger") > 0.1f || Input.GetAxis(ControllerHand.OculusInputPrefix + "PrimaryHandTrigger") > 0.1f));
+    }
+
+    public void LetGoTeleport() {
+        if(currentBubble != null)
+            currentBubble.transform.position = new Vector3(1,1,0.5f);
+        LetGo();
     }
 
     public void LetGo() {
@@ -31,5 +46,10 @@ public class Grabber : MonoBehaviour
             other.transform.GetComponent<Bubble>()?.Grab(this.gameObject);
             currentBubble = other.transform.GetComponent<Bubble>();
         }
+    }
+
+    private void OnDestroy()
+    {
+        TagSwitcher.swap -= LetGo;
     }
 }

@@ -38,44 +38,6 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 1}
       cameraFieldOfView: 50
---- !u!114 &-7253267243313505678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: NewRenderObjects
-  m_EditorClassIdentifier: 
-  settings:
-    passTag: NewRenderObjects
-    Event: 400
-    filterSettings:
-      RenderQueueType: 0
-      LayerMask:
-        serializedVersion: 2
-        m_Bits: 1048576
-      PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: 9debd4381c3cb7341a971c05c9599ab3, type: 2}
-    overrideMaterialPassIndex: 0
-    overrideDepthState: 0
-    depthCompareFunction: 4
-    enableWrite: 1
-    stencilSettings:
-      overrideStencilState: 0
-      stencilReference: 0
-      stencilCompareFunction: 8
-      passOperation: 0
-      failOperation: 0
-      zFailOperation: 0
-    cameraSettings:
-      overrideCamera: 0
-      restoreCamera: 1
-      offset: {x: 0, y: 0, z: 0, w: 0}
-      cameraFieldOfView: 60
 --- !u!114 &-5300129343354572577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Mask1
-    Event: 300
+    Event: 450
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -135,7 +97,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 8192
       PassNames: []
-    overrideMaterial: {fileID: 0}
+    overrideMaterial: {fileID: 2100000, guid: 0ec8e3620dffdab498543a1cbb3c81c3, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4
@@ -151,7 +113,7 @@ MonoBehaviour:
       overrideCamera: 0
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
-      cameraFieldOfView: 60
+      cameraFieldOfView: 64
 --- !u!114 &-4309039455605094273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Transparent3
-    Event: 300
+    Event: 450
     filterSettings:
       RenderQueueType: 1
       LayerMask:
@@ -280,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Refraction
-    Event: 1000
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -289,7 +251,7 @@ MonoBehaviour:
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: e1726d0e81512804688f12c274a79dc5, type: 2}
     overrideMaterialPassIndex: 0
-    overrideDepthState: 0
+    overrideDepthState: 1
     depthCompareFunction: 8
     enableWrite: 0
     stencilSettings:
@@ -318,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Transparent2
-    Event: 300
+    Event: 450
     filterSettings:
       RenderQueueType: 1
       LayerMask:
@@ -356,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: NonMaskedObjects
-    Event: 500
+    Event: 450
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -405,7 +367,7 @@ MonoBehaviour:
   - {fileID: -1923626983523860519}
   - {fileID: -1072939054567012650}
   - {fileID: 7026838648643716968}
-  - {fileID: -7253267243313505678}
+  - {fileID: 7314477598501240678}
   m_BlitShader: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
   m_CopyDepthShader: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
   m_ScreenSpaceShadowShader: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd,
@@ -413,10 +375,10 @@ MonoBehaviour:
   m_SamplingShader: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 0
@@ -438,12 +400,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Transparent1
-    Event: 300
+    Event: 450
     filterSettings:
-      RenderQueueType: 0
+      RenderQueueType: 1
       LayerMask:
         serializedVersion: 2
-        m_Bits: 0
+        m_Bits: 1024
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -451,9 +413,9 @@ MonoBehaviour:
     depthCompareFunction: 4
     enableWrite: 1
     stencilSettings:
-      overrideStencilState: 0
-      stencilReference: 0
-      stencilCompareFunction: 8
+      overrideStencilState: 1
+      stencilReference: 1
+      stencilCompareFunction: 3
       passOperation: 0
       failOperation: 0
       zFailOperation: 0
@@ -476,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Mask2
-    Event: 300
+    Event: 450
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -514,12 +476,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: NonMaskedTransparent
-    Event: 1000
+    Event: 400
     filterSettings:
       RenderQueueType: 1
       LayerMask:
         serializedVersion: 2
-        m_Bits: 98304
+        m_Bits: 32768
+      PassNames: []
+    overrideMaterial: {fileID: 0}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &7314477598501240678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Hands
+  m_EditorClassIdentifier: 
+  settings:
+    passTag: Hands
+    Event: 600
+    filterSettings:
+      RenderQueueType: 1
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 1
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     passTag: Mask3
-    Event: 300
+    Event: 450
     filterSettings:
       RenderQueueType: 0
       LayerMask:

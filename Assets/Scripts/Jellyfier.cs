@@ -13,9 +13,11 @@ public class Jellyfier : MonoBehaviour
 
     JellyVertex[] jellyVertices;
     Vector3[] currentMeshVertices;
+    AudioSource source;
 
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         meshFilter = GetComponent<MeshFilter>();
         mesh = meshFilter.mesh;
         GetVerticies();
@@ -57,6 +59,8 @@ public class Jellyfier : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         ContactPoint[] collisionPoints = collision.contacts;
+        source.pitch = Random.Range(0.98f, 1.14f);
+        source.Play();
         for (int i = 0; i < collisionPoints.Length; i++) {
             Vector3 inputPoint = collisionPoints[i].point + (collisionPoints[i].point * .1f);
             ApplyPressureToPoint(inputPoint, fallForce);

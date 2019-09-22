@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: grassLong
-  m_Shader: {fileID: -6465566751694194690, guid: dfaaaf1f3e044014dbd545b8fbe0314e,
+  m_Shader: {fileID: -6465566751694194690, guid: f23c38c8cfa56dd4e8488252e496cdd0,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

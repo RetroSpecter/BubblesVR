@@ -25,7 +25,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _FadeOutDistance: 0.89
-    - _Fresnel: 3.85
+    - _Fresnel: 373.4
     - _Refraction: 24.4
     - _RefractionStrength: 0.69
     - _Smoothness: 0.566

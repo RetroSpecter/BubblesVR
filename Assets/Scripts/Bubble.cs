@@ -6,10 +6,19 @@ public class Bubble : MonoBehaviour
 {
     private Rigidbody rigid;
     public float speed = 5;
+
     // Start is called before the first frame update
     void Start() {
+
         rigid = GetComponent<Rigidbody>();
         rigid.velocity = Random.insideUnitSphere * speed;
+    }
+
+    private void Update()
+    {
+        if (rigid.velocity.magnitude < speed/2f) {
+            rigid.velocity = rigid.velocity.normalized * speed;
+        }
     }
 
     public void Grab(GameObject grabber) {
@@ -25,7 +34,9 @@ public class Bubble : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (!collision.transform.CompareTag("Hand")) {
+        if (collision.transform.CompareTag("Hand")) {
+            rigid.velocity = rigid.velocity.magnitude * -collision.relativeVelocity * 3;
+        } else {
             rigid.velocity = rigid.velocity.magnitude * Vector3.Reflect(rigid.velocity, collision.GetContact(0).normal).normalized;
         }
     }
