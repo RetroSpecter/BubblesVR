@@ -6,10 +6,12 @@ public class Grabber : MonoBehaviour
 {
     Bubble currentBubble;
     public Controllers controllerSize;
+    private static Camera cam;
 
     private void Start()
     {
         TagSwitcher.swap += LetGoTeleport;
+        cam = Camera.main;
     }
 
     private void Update()
@@ -38,6 +40,11 @@ public class Grabber : MonoBehaviour
 
     public void LetGo() {
         currentBubble?.LetGo();
+        /*
+        if (Vector3.Distance(currentBubble.transform.position, cam.transform.position + cam.transform.forward * 0.25f) < 0.5f) {
+            StartCoroutine(currentBubble.lerpToPosition(cam.transform.forward * 0.25f, 0.25f));
+        }
+        */
         currentBubble = null;
     }
 

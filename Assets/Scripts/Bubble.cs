@@ -9,14 +9,14 @@ public class Bubble : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-
         rigid = GetComponent<Rigidbody>();
         rigid.velocity = Random.insideUnitSphere * speed;
     }
 
     private void Update()
     {
-        if (rigid.velocity.magnitude < speed/2f) {
+        if (rigid.velocity.magnitude < speed / 2f)
+        {
             rigid.velocity = rigid.velocity.normalized * speed;
         }
     }
@@ -40,4 +40,17 @@ public class Bubble : MonoBehaviour
             rigid.velocity = rigid.velocity.magnitude * Vector3.Reflect(rigid.velocity, collision.GetContact(0).normal).normalized;
         }
     }
+    /*
+    public IEnumerator lerpToPosition(Vector3 position, float time) {
+        
+        float t = 0;
+        while (t < time) {
+            transform.position = Vector3.Lerp(transform.position, position, t/time);
+            yield return null;
+            t += Time.deltaTime;
+        }
+        
+        //yield return null;
+        //transform.position = position;
+    }*/
 }

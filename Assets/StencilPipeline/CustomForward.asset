@@ -38,6 +38,44 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 1}
       cameraFieldOfView: 50
+--- !u!114 &-7134146722290410920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Refraction2
+  m_EditorClassIdentifier: 
+  settings:
+    passTag: Refraction2
+    Event: 500
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 2048
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 7e311ff35558f724187cbf6e5870c730, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 1
+    depthCompareFunction: 8
+    enableWrite: 0
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
 --- !u!114 &-5300129343354572577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,16 +276,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: Refraction
+  m_Name: Refraction1
   m_EditorClassIdentifier: 
   settings:
-    passTag: Refraction
+    passTag: Refraction1
     Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 10752
+        m_Bits: 512
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: e1726d0e81512804688f12c274a79dc5, type: 2}
     overrideMaterialPassIndex: 0
@@ -358,13 +396,15 @@ MonoBehaviour:
   - {fileID: -7421727269205982866}
   - {fileID: -5300129343354572577}
   - {fileID: 2070829508769274944}
+  - {fileID: -1923626983523860519}
+  - {fileID: -7134146722290410920}
+  - {fileID: 1495523308175059183}
   - {fileID: -3881197449621602079}
   - {fileID: 6884178371631375719}
   - {fileID: -1253730388788434393}
   - {fileID: -4842526908265150639}
   - {fileID: 7320122556133897561}
   - {fileID: -3188013360386906850}
-  - {fileID: -1923626983523860519}
   - {fileID: -1072939054567012650}
   - {fileID: 7026838648643716968}
   - {fileID: 7314477598501240678}
@@ -386,6 +426,44 @@ MonoBehaviour:
     passOperation: 0
     failOperation: 0
     zFailOperation: 0
+--- !u!114 &1495523308175059183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Refraction3
+  m_EditorClassIdentifier: 
+  settings:
+    passTag: Refraction3
+    Event: 500
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 8192
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 1ca6eb2eedf507a4380f5b78c87c3997, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
 --- !u!114 &2070829508769274944
 MonoBehaviour:
   m_ObjectHideFlags: 0
