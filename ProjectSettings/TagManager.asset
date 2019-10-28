@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hand
   - Bubble
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Frame3
   - Mask3
   - NonMask
-  - 
-  - 
+  - Frame4
+  - Mask4
   - 
   - 
   - 
