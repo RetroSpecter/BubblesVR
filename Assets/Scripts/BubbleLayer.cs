@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * manages how the bubble interacts with the stencil layers
+*/
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(MeshRenderer))]
-public class ProximityTagSwitcher : MonoBehaviour
+public class BubbleLayer : MonoBehaviour
 {
     public float minDistance = 0.2f;
     public float scaleMultiplyer = 2;
@@ -17,16 +20,16 @@ public class ProximityTagSwitcher : MonoBehaviour
     public int layer = 1;
     public float timer = 3f;
 
+    IEnumerator disappearEnum;
+
     private void Start() {
         cam = Camera.main;
         rigid = GetComponent<Rigidbody>();
         mesh = GetComponent<MeshRenderer>();
         initialScale = transform.localScale;
-        TagSwitcher.swap += disappear;
+        WorldLayerManager.swap += disappear;
     }
     
-    
-    // Update is called once per frame
     void Update()
     {
         if (disappearEnum == null)
@@ -35,15 +38,14 @@ public class ProximityTagSwitcher : MonoBehaviour
             float xyScale = initialScale.x * Mathf.Lerp(1, scaleMultiplyer, 1 - (Vector3.Distance(cam.transform.position, transform.position) / minDistance));
             float zScale = initialScale.x * Mathf.Lerp(1, 0.0001f, 1 - (Vector3.Distance(cam.transform.position, transform.position) / 0.25f));
             transform.localScale = new Vector3(xyScale, xyScale, zScale);
-            TagSwitcher.instance.updateVolumeMultiplyer(layer, Vector3.Distance(cam.transform.position, transform.position));
+            WorldLayerManager.instance.UpdateVolumeMultiplyer(layer, Vector3.Distance(cam.transform.position, transform.position));
         }
     }
     
-
     public void SwapLayer() {
         if (mesh.enabled)
         {
-            TagSwitcher.instance.SwapOcclusionLayer(layer);
+            WorldLayerManager.instance.SwapWorldLayers(layer);
             mesh.enabled = false;
             rigid.isKinematic = true;
             StartCoroutine(respawnTimer(timer));
@@ -58,7 +60,6 @@ public class ProximityTagSwitcher : MonoBehaviour
         }
     }
 
-    IEnumerator disappearEnum;
     IEnumerator resize(float disappearTime, float resizeTime)
     {
         transform.localScale = Vector3.one * 0.001f;
@@ -76,14 +77,15 @@ public class ProximityTagSwitcher : MonoBehaviour
         disappearEnum = null;
     }
 
-    private void OnDestroy()
-    {
-        TagSwitcher.swap -= disappear;
-    }
-
     IEnumerator respawnTimer(float seconds) {
         yield return new WaitForSeconds(seconds);
         mesh.enabled = true;
         rigid.isKinematic = false;
     }
+
+    private void OnDestroy()
+    {
+        WorldLayerManager.swap -= disappear;
+    }
+
 }

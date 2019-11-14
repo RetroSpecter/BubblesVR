@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TagSwitcher : MonoBehaviour
+/*
+ * Manages the different worlds and their visibility layers
+ */
+public class WorldLayerManager : MonoBehaviour
 {
-    public static TagSwitcher instance;
+    public static WorldLayerManager instance;
     public delegate void worldSwap();
     public static worldSwap swap;
 
@@ -28,29 +31,26 @@ public class TagSwitcher : MonoBehaviour
         UpdateAudioLayers();
     }
 
-    public void SwapOcclusionLayer(int maskNumber) {
-        SwapLayer(objectLayers[maskNumber], maskLayers[0].occuldedLayer);
-        SwapLayer(objectLayers[0], maskLayers[maskNumber].occuldedLayer);
-
-        ObjectLayerGroup temp = objectLayers[0];
-        objectLayers[0] = objectLayers[maskNumber];
-        objectLayers[maskNumber] = temp;
-
-        //swap the audio layers as well
-        AudioLayer audioTemp = audioLayers[0];
-        audioLayers[0] = audioLayers[maskNumber];
-        audioLayers[maskNumber] = audioTemp;
-
-        float VolLayer = volumeMultiplyers[0];
-        volumeMultiplyers[0] = volumeMultiplyers[maskNumber];
-        volumeMultiplyers[maskNumber] = VolLayer;
-    }
-
-    public void SwapLayer(ObjectLayerGroup olg, string layer) {
+    // Uses a maskNumber to set the current visible world
+    public void SwapWorldLayers(int maskNumber) {
         if (swap != null) {
             swap.Invoke();
         }
+        SwapObjectLayer(objectLayers[maskNumber], maskLayers[0].occuldedLayer);
+        SwapObjectLayer(objectLayers[0], maskLayers[maskNumber].occuldedLayer);
 
+        setPrimaryMask(maskNumber);
+        SwapAudioLayer(maskNumber);
+    }
+
+    private void setPrimaryMask(int maskNumber) {
+        ObjectLayerGroup temp = objectLayers[0];
+        objectLayers[0] = objectLayers[maskNumber];
+        objectLayers[maskNumber] = temp;
+    }
+
+    // gets all of the gameobjects in a objectlayergroup, and switches them to the new stencil layer
+    private void SwapObjectLayer(ObjectLayerGroup olg, string layer) {
         foreach (GameObject go in olg.layerObjects) {
             go.layer = LayerMask.NameToLayer(layer);
             if (olg.affectChildren)
@@ -58,8 +58,7 @@ public class TagSwitcher : MonoBehaviour
                 foreach (Transform transform in go.GetComponentsInChildren<Transform>())
                 {
                     transform.gameObject.layer = LayerMask.NameToLayer(layer);
-                    if (transform.GetComponent<Light>() != null)
-                    {
+                    if (transform.GetComponent<Light>() != null) {
                         transform.GetComponent<Light>().cullingMask = LayerMask.GetMask(new string[]{"Default", layer});
                     }
                 }
@@ -67,7 +66,7 @@ public class TagSwitcher : MonoBehaviour
         }
     }
 
-    void InitAudioLayers() {
+    private void InitAudioLayers() {
         volumeMultiplyers = new float[objectLayers.Length];
         audioLayers = new AudioLayer[objectLayers.Length];
         for (int i = 0; i < objectLayers.Length; i++)
@@ -83,7 +82,17 @@ public class TagSwitcher : MonoBehaviour
         }
     }
 
-    public void updateVolumeMultiplyer(int layerNum, float distance) {
+    private void SwapAudioLayer(int maskNumber) {
+        AudioLayer audioTemp = audioLayers[0];
+        audioLayers[0] = audioLayers[maskNumber];
+        audioLayers[maskNumber] = audioTemp;
+
+        float VolLayer = volumeMultiplyers[0];
+        volumeMultiplyers[0] = volumeMultiplyers[maskNumber];
+        volumeMultiplyers[maskNumber] = VolLayer;
+    }
+
+    public void UpdateVolumeMultiplyer(int layerNum, float distance) {
         float vol = distance / distanceThreshold;
         vol = Mathf.Clamp(vol, 0, 1);
         volumeMultiplyers[layerNum] = Mathf.Max(volumeMultiplyers[layerNum], Mathf.InverseLerp(0.25f, 0, vol));
@@ -102,27 +111,6 @@ public class TagSwitcher : MonoBehaviour
         audioLayers[0].setVolume(1 - maxVolume);
     }
 
-    /*
-    public void SwapMaskLayer(ObjectLayerGroup olg, MaskLayer ml)
-    {
-        SwitchOcclusionLayer(olg, ml.occuldedLayer);
-        SwitchFrameLayer(olg, ml.frameLayer);
-    }
-
-    public void SwitchFrameLayer(ObjectLayerGroup olg, string layer) {
-        foreach (GameObject go in olg.frameObjects)
-        {
-            go.layer = LayerMask.NameToLayer(layer);
-            if (olg.affectChildren)
-            {
-                foreach (Transform transform in go.GetComponentsInChildren<Transform>())
-                {
-                    transform.gameObject.layer = LayerMask.NameToLayer(layer);
-                }
-            }
-        }
-    }
-    */
 }
 
 [System.Serializable]

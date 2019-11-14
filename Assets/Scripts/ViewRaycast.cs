@@ -9,32 +9,22 @@ public class ViewRaycast : MonoBehaviour
     [Range(0,1)]
     public float width, height;
 
-    // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        fullyBlocked()?.SwapLayer();
+        GetOccludedObject()?.GetComponent<BubbleLayer>()?.SwapLayer();
     }
 
-    public ProximityTagSwitcher fullyBlocked() {
+    // checks to see if there is an object fully covering the viewport
+    // return it if it exists
+    public GameObject GetOccludedObject() {
         GameObject blockingObject = null;
 
-        for (int i = -1; i <= 2; i += 2)
-        {
-            for (int j = -1; j < 2; j += 2)
-            {
-                Vector2 corner = new Vector2(0.5f + width / 2 * i, 0.5f + height / 2 * j);
-                // print(i + " " + j + ":" + corner);
-                Ray ray = cam.ViewportPointToRay(corner);
-                Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
-            }
-        }
-
+        DrawDebugViewportBounds(this.width, this.height, this.cam);
 
         for (int i = -1; i <= 2; i+=2) {
             for (int j = -1; j < 2; j+=2)
@@ -53,6 +43,18 @@ public class ViewRaycast : MonoBehaviour
                 }
             }
         }
-        return blockingObject.GetComponent<ProximityTagSwitcher>();
+        return blockingObject;
+    }
+
+    void DrawDebugViewportBounds(float width, float height, Camera cam) {
+        for (int i = -1; i <= 2; i += 2)
+        {
+            for (int j = -1; j < 2; j += 2)
+            {
+                Vector2 corner = new Vector2(0.5f + width / 2 * i, 0.5f + height / 2 * j);
+                Ray ray = cam.ViewportPointToRay(corner);
+                Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
+            }
+        }
     }
 }

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerHand : MonoBehaviour
+// manages animation and the side of a hand
+public class Hand : MonoBehaviour
 {
     public Controllers controllerSide = Controllers.Left;
     public static string OculusInputPrefix = "Oculus_CrossPlatform_";
     public Animator anim;
 
-    // Update is called once per frame
     void Update()
     {
         string side = GetControllerPrefix(controllerSide);

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bubble : MonoBehaviour
+/*
+ * Manages the positioning and movement of the bubble
+ */
+public class BubbleMovement : MonoBehaviour
 {
     private Rigidbody rigid;
     public float speed = 5;
 
-    // Start is called before the first frame update
     void Start() {
         rigid = GetComponent<Rigidbody>();
         rigid.velocity = Random.insideUnitSphere * speed;
@@ -21,13 +23,13 @@ public class Bubble : MonoBehaviour
         }
     }
 
-    public void Grab(GameObject grabber) {
+    public void Grabbed(GameObject grabber) {
         rigid.isKinematic = true;
         transform.parent = grabber.transform;
         rigid.velocity = Vector3.zero;
     }
 
-    public void LetGo() {
+    public void Released() {
         rigid.isKinematic = false;
         transform.parent = null;
         rigid.velocity = Random.insideUnitSphere * speed;
@@ -40,6 +42,7 @@ public class Bubble : MonoBehaviour
             rigid.velocity = rigid.velocity.magnitude * Vector3.Reflect(rigid.velocity, collision.GetContact(0).normal).normalized;
         }
     }
+
     /*
     public IEnumerator lerpToPosition(Vector3 position, float time) {
         
