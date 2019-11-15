@@ -5,16 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/video/videotest.unity
-    guid: dde2a1eec1033744c80692d456dc92df
   - enabled: 1
-    path: Assets/Scenes/TestScenes/ControllerTest.unity
-    guid: 247de8ed56cc825448d568b5449ee499
+    path: Assets/Scenes/ControllerTest.unity
+    guid: 815612e188164fd4ead87946851c1184
   m_configObjects: {}
