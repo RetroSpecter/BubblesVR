@@ -36,6 +36,7 @@ public class BubbleMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
+        
         if (collision.transform.CompareTag("Hand")) {
             rigid.velocity = rigid.velocity.magnitude * -collision.relativeVelocity * 3;
         } else {

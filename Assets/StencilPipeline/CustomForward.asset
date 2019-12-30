@@ -21,7 +21,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 512
       PassNames: []
-    overrideMaterial: {fileID: 0}
+    overrideMaterial: {fileID: 2100000, guid: 3475560885b31994782ddbca9f8d5980, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4
@@ -105,6 +105,82 @@ MonoBehaviour:
     stencilSettings:
       overrideStencilState: 1
       stencilReference: 4
+      stencilCompareFunction: 1
+      passOperation: 0
+      failOperation: 2
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &-6535674478758125808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Transparent5
+  m_EditorClassIdentifier: 
+  settings:
+    passTag: Transparent5
+    Event: 450
+    filterSettings:
+      RenderQueueType: 1
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 524288
+      PassNames: []
+    overrideMaterial: {fileID: 0}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 1
+      stencilReference: 5
+      stencilCompareFunction: 3
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &-6122732308048404048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Portal5
+  m_EditorClassIdentifier: 
+  settings:
+    passTag: Portal5
+    Event: 300
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 262144
+      PassNames: []
+    overrideMaterial: {fileID: 0}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 1
+      stencilReference: 5
       stencilCompareFunction: 1
       passOperation: 0
       failOperation: 2
@@ -374,7 +450,7 @@ MonoBehaviour:
       stencilCompareFunction: 3
       passOperation: 0
       failOperation: 0
-      zFailOperation: 0
+      zFailOperation: 5
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
@@ -407,12 +483,12 @@ MonoBehaviour:
     depthCompareFunction: 8
     enableWrite: 0
     stencilSettings:
-      overrideStencilState: 0
+      overrideStencilState: 1
       stencilReference: 3
-      stencilCompareFunction: 3
-      passOperation: 2
+      stencilCompareFunction: 8
+      passOperation: 0
       failOperation: 1
-      zFailOperation: 6
+      zFailOperation: 0
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
@@ -546,21 +622,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RendererFeatures:
   - {fileID: -7421727269205982866}
+  - {fileID: -3881197449621602079}
+  - {fileID: -4842526908265150639}
+  - {fileID: -6754388275402315200}
+  - {fileID: -6122732308048404048}
   - {fileID: -5300129343354572577}
+  - {fileID: 6884178371631375719}
+  - {fileID: 7320122556133897561}
+  - {fileID: -5991802285671684257}
+  - {fileID: 6109676127038331080}
   - {fileID: 2070829508769274944}
+  - {fileID: -1253730388788434393}
+  - {fileID: -3188013360386906850}
+  - {fileID: -163186321041615105}
+  - {fileID: -6535674478758125808}
   - {fileID: -1923626983523860519}
   - {fileID: -7134146722290410920}
   - {fileID: 1495523308175059183}
   - {fileID: -5929862685549156065}
-  - {fileID: -3881197449621602079}
-  - {fileID: 6884178371631375719}
-  - {fileID: -1253730388788434393}
-  - {fileID: -4842526908265150639}
-  - {fileID: 7320122556133897561}
-  - {fileID: -3188013360386906850}
-  - {fileID: -6754388275402315200}
-  - {fileID: -5991802285671684257}
-  - {fileID: -163186321041615105}
+  - {fileID: 3711422475065401442}
   - {fileID: -1072939054567012650}
   - {fileID: 7026838648643716968}
   - {fileID: 7314477598501240678}
@@ -610,11 +690,11 @@ MonoBehaviour:
     enableWrite: 1
     stencilSettings:
       overrideStencilState: 0
-      stencilReference: 0
-      stencilCompareFunction: 8
-      passOperation: 0
-      failOperation: 0
-      zFailOperation: 0
+      stencilReference: 2
+      stencilCompareFunction: 2
+      passOperation: 1
+      failOperation: 1
+      zFailOperation: 2
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
@@ -649,6 +729,82 @@ MonoBehaviour:
     stencilSettings:
       overrideStencilState: 1
       stencilReference: 1
+      stencilCompareFunction: 3
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &3711422475065401442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Refraction5
+  m_EditorClassIdentifier: 
+  settings:
+    passTag: Refraction5
+    Event: 500
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 262144
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 666a8951997f9a44ab0b03816455da5c, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &6109676127038331080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Mask5
+  m_EditorClassIdentifier: 
+  settings:
+    passTag: Mask5
+    Event: 450
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 524288
+      PassNames: []
+    overrideMaterial: {fileID: 0}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 1
+      stencilReference: 5
       stencilCompareFunction: 3
       passOperation: 0
       failOperation: 0

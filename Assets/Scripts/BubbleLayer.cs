@@ -27,9 +27,11 @@ public class BubbleLayer : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         mesh = GetComponent<MeshRenderer>();
         initialScale = transform.localScale;
-        WorldLayerManager.swap += disappear;
+        WorldLayerManager.swap += hideBubble;
     }
-    
+
+
+
     void Update()
     {
         if (disappearEnum == null)
@@ -41,7 +43,7 @@ public class BubbleLayer : MonoBehaviour
             WorldLayerManager.instance.UpdateVolumeMultiplyer(layer, Vector3.Distance(cam.transform.position, transform.position));
         }
     }
-    
+
     public void SwapLayer() {
         if (mesh.enabled)
         {
@@ -52,12 +54,16 @@ public class BubbleLayer : MonoBehaviour
         }
     }
 
-    public void disappear() {
+    public void hideBubble() {
         if (disappearEnum == null)
         {
             disappearEnum = resize(3 + Random.Range(0.25f, 3f), 0.25f + Random.Range(0.05f, 0.5f));
             StartCoroutine(disappearEnum);
         }
+    }
+
+    private bool isGrabbed() {
+        return rigid.isKinematic == true;
     }
 
     IEnumerator resize(float disappearTime, float resizeTime)
@@ -85,7 +91,13 @@ public class BubbleLayer : MonoBehaviour
 
     private void OnDestroy()
     {
-        WorldLayerManager.swap -= disappear;
+        WorldLayerManager.swap -= hideBubble;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (this.isGrabbed() && other.transform.GetComponent<BubbleLayer>() != null && other.transform.GetComponent<BubbleLayer>().isGrabbed()) {
+            //WorldLayerManager.instance.fuseBubbles(this, other.transform.GetComponent<BubbleLayer>());
+        }
+    }
 }
